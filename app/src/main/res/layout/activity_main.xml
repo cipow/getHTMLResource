@@ -55,6 +55,7 @@
                 android:padding="5dp">
 
                 <TextView
+                    android:id="@+id/sumber_HTML"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tampilan Sumber HTML"
