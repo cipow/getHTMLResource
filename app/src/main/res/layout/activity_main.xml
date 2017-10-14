@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/url_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Alamat URL web" />
@@ -41,6 +42,7 @@
             android:layout_marginTop="10dp"
             android:background="#ffd900"
             android:padding="5dp"
+            android:onClick="yolooo"
             android:text="Dapatkan Sumber HTML" />
 
         <ScrollView
@@ -48,19 +50,13 @@
             android:layout_height="wrap_content"
             android:scrollbars="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/sumber_HTML"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:id="@+id/sumber_HTML"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tampilan Sumber HTML"
-                    android:textColor="#000000" />
-            </LinearLayout>
+                android:layout_margin="5dp"
+                android:text="Tampilan Sumber HTML"
+                android:textColor="#000000" />
 
         </ScrollView>
 
