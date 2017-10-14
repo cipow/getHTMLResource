@@ -15,12 +15,6 @@ import java.net.URL;
  */
 
 public class GetHTMLSource extends AsyncTask<String,Void,String> {
-    private Context ctx;
-
-    public GetHTMLSource(Context ctx) {
-        this.ctx = ctx;
-    }
-
 
     @Override
     protected String doInBackground(String... params) {
@@ -52,7 +46,6 @@ public class GetHTMLSource extends AsyncTask<String,Void,String> {
 
 
         } catch (Exception e) {
-            Toast.makeText(ctx,"Kesalahan dalam akses URL\nCoba ubah protokol",Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
 

@@ -1,5 +1,6 @@
 package com.example.cipowela.gethtmlresource;
 
+import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (checkConnection()) {
-            yolo = new GetHTMLSource(this);
+            yolo = new GetHTMLSource();
             yolo.execute(link_url);
         } else {
             Toast.makeText(this,"check your internet connection", Toast.LENGTH_SHORT).show();
