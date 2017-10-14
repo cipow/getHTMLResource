@@ -1,8 +1,5 @@
 # Build from Android Studio 2.3.3
 
-# Error
-Keluar Sendiri Ketika salah protokol
-
 ## Import Project
 ### Use Git
 
