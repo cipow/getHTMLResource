@@ -2,6 +2,7 @@ package com.example.cipowela.gethtmlresource;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -15,6 +16,12 @@ import java.net.URL;
  */
 
 public class GetHTMLSource extends AsyncTask<String,Void,String> {
+
+    private TextView result;
+
+    public GetHTMLSource(TextView result) {
+        this.result = result;
+    }
 
     @Override
     protected String doInBackground(String... params) {
@@ -55,6 +62,7 @@ public class GetHTMLSource extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String s) {
-        MainActivity.result_HTML.setText(s);
+        super.onPostExecute(s);
+        result.setText(s);
     }
 }

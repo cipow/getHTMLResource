@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    static TextView result_HTML;
+    TextView result_HTML;
     Spinner spin;
     EditText text_url;
     ArrayAdapter<CharSequence> list_spinner;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
-                Log.e("Error"+Thread.currentThread().getStackTrace()[2],paramThrowable.getLocalizedMessage());
+                Log.e("Error" + Thread.currentThread().getStackTrace()[2], paramThrowable.getLocalizedMessage());
             }
         });
 
@@ -47,12 +48,17 @@ public class MainActivity extends AppCompatActivity {
 
         link_url = spin.getSelectedItem().toString() + text_url.getText().toString();
 
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                InputMethodManager.HIDE_NOT_ALWAYS);
 
         if (checkConnection()) {
-            yolo = new GetHTMLSource();
+            yolo = new GetHTMLSource(result_HTML);
             yolo.execute(link_url);
+            result_HTML.setText("Loading....");
         } else {
-            Toast.makeText(this,"check your internet connection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
             result_HTML.setText("No Internet Connection");
         }
     }
