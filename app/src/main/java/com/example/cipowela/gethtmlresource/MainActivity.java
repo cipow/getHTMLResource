@@ -3,6 +3,8 @@ package com.example.cipowela.gethtmlresource;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
     TextView result_HTML;
     Spinner spin;
@@ -41,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (getSupportLoaderManager().getLoader(0) != null) {
+            getSupportLoaderManager().initLoader(0, null, this);
+        }
+
     }
 
     public void yolooo(View view) {
@@ -54,9 +60,11 @@ public class MainActivity extends AppCompatActivity {
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
         if (checkConnection()) {
-            yolo = new GetHTMLSource(result_HTML);
-            yolo.execute(link_url);
             result_HTML.setText("Loading....");
+
+            Bundle bundle = new Bundle();
+            bundle.putString("url_link", link_url);
+            getSupportLoaderManager().restartLoader(0, bundle, this);
         } else {
             Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
             result_HTML.setText("No Internet Connection");
@@ -68,5 +76,20 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
 
         return networkInfo != null && networkInfo.isConnected();
+    }
+
+    @Override
+    public Loader<String> onCreateLoader(int id, Bundle args) {
+        return new GetHTMLSource(this, args.getString("url_link"));
+    }
+
+    @Override
+    public void onLoadFinished(Loader<String> loader, String data) {
+        result_HTML.setText(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<String> loader) {
+
     }
 }
