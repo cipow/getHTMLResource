@@ -10,11 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
@@ -22,49 +20,41 @@
 
             <Spinner
                 android:id="@+id/spinner_protokol"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content" />
 
             <EditText
                 android:id="@+id/input_link"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/spinner_protokol"
                 android:hint="@string/hint_url"
                 android:inputType="text" />
 
-        </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="#c1c1c1"
+                android:onClick="yolooo"
+                android:text="GET"
+                android:textStyle="bold"
+                android:textSize="24sp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
-            android:background="#ffd900"
-            android:onClick="yolooo"
-            android:padding="5dp"
-            android:text="@string/button_url" />
+        </RelativeLayout>
+
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/sumber_HTML"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/sumber_HTML"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="@string/text_url"
-                    android:textColor="#000000" />
-
-            </LinearLayout>
-
+                android:layout_margin="5dp"
+                android:textColor="#000000" />
         </ScrollView>
 
     </LinearLayout>
