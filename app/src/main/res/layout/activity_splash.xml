@@ -7,22 +7,24 @@
     android:background="@color/colorPrimary"
     tools:context="com.example.cipowela.gethtmlresource.Splash">
 
-    <TextView
-        android:id="@+id/text_logo"
+
+    <ProgressBar
+        android:id="@+id/loading_screen"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/loading_screen"
         android:layout_centerInParent="true"
         android:text="YOLOOO"
         android:textColor="#ffffff"
         android:textSize="36sp"
         android:textStyle="bold" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text_logo"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
