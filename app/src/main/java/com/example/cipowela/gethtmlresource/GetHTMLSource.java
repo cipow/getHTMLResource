@@ -52,8 +52,8 @@ public class GetHTMLSource extends AsyncTask<String,Void,String> {
 
 
         } catch (Exception e) {
-            e.printStackTrace();
             Toast.makeText(ctx,"Kesalahan dalam akses URL\nCoba ubah protokol",Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
 
 
