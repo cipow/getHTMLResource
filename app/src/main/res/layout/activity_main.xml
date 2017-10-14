@@ -27,10 +27,11 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/url_input"
+                android:id="@+id/input_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Alamat URL web" />
+                android:hint="@string/hint_url"
+                android:inputType="text" />
 
         </LinearLayout>
 
@@ -43,7 +44,7 @@
             android:background="#ffd900"
             android:padding="5dp"
             android:onClick="yolooo"
-            android:text="Dapatkan Sumber HTML" />
+            android:text="@string/button_url" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -55,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Tampilan Sumber HTML"
+                android:text="@string/text_url"
                 android:textColor="#000000" />
 
         </ScrollView>

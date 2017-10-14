@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spin = (Spinner) findViewById(R.id.spinner_protokol);
-        text_url = (EditText) findViewById(R.id.url_input);
+        text_url = (EditText) findViewById(R.id.input_link);
         result_HTML = (TextView) findViewById(R.id.sumber_HTML);
 
         list_spinner = ArrayAdapter.createFromResource(this, R.array.protokol, android.R.layout.simple_spinner_item);
