@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     Spinner spin;
     EditText text_url;
     ArrayAdapter<CharSequence> list_spinner;
-    GetHTMLSource yolo;
+    ProgressBar loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         spin = (Spinner) findViewById(R.id.spinner_protokol);
         text_url = (EditText) findViewById(R.id.input_link);
         result_HTML = (TextView) findViewById(R.id.sumber_HTML);
+        loading = (ProgressBar) findViewById(R.id.progress_loading);
 
         list_spinner = ArrayAdapter.createFromResource(this, R.array.protokol, android.R.layout.simple_spinner_item);
         list_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
+                loading.setVisibility(View.GONE);
                 Log.e("Error" + Thread.currentThread().getStackTrace()[2], paramThrowable.getLocalizedMessage());
             }
         });
@@ -60,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
         if (checkConnection()) {
-            result_HTML.setText("Loading....");
+            loading.setVisibility(View.VISIBLE);
 
             Bundle bundle = new Bundle();
             bundle.putString("url_link", link_url);
@@ -85,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
+        loading.setVisibility(View.GONE);
         result_HTML.setText(data);
     }
 
