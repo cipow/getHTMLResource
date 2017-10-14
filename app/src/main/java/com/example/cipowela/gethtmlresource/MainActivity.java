@@ -53,25 +53,42 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     public void yolooo(View view) {
-        String link_url;
-
-        link_url = spin.getSelectedItem().toString() + text_url.getText().toString();
+        String link_url, protokol, url;
+        protokol = spin.getSelectedItem().toString();
+        url = text_url.getText().toString();
 
         InputMethodManager inputManager = (InputMethodManager)
                 getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
-        if (checkConnection()) {
-            loading.setVisibility(View.VISIBLE);
+        if (!url.isEmpty()) {
+            if (url.contains(".")) {
+                if (checkConnection()) {
+                    result_HTML.setText("");
+                    loading.setVisibility(View.VISIBLE);
 
-            Bundle bundle = new Bundle();
-            bundle.putString("url_link", link_url);
-            getSupportLoaderManager().restartLoader(0, bundle, this);
+                    link_url = protokol + url;
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("url_link", link_url);
+                    getSupportLoaderManager().restartLoader(0, bundle, this);
+
+                } else {
+                    Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
+                    result_HTML.setText("No Internet Connection");
+
+                }
+            } else {
+                result_HTML.setText("Invalid URL");
+
+            }
+
         } else {
-            Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
-            result_HTML.setText("No Internet Connection");
+            result_HTML.setText("URL can\'t empty");
         }
+
+
     }
 
     public boolean checkConnection() {
