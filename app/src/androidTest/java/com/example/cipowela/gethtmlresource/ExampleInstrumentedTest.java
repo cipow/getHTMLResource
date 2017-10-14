@@ -1,4 +1,4 @@
-package com.example.gilangk.gethtmlresource;
+package com.example.cipowela.gethtmlresource;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

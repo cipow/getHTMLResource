@@ -1,4 +1,4 @@
-package com.example.gilangk.gethtmlresource;
+package com.example.cipowela.gethtmlresource;
 
 import org.junit.Test;
 

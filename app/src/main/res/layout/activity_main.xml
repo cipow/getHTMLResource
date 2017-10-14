@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.gilangk.gethtmlresource.MainActivity">
+    tools:context="com.example.cipowela.gethtmlresource.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

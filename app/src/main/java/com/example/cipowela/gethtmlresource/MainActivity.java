@@ -1,4 +1,4 @@
-package com.example.gilangk.gethtmlresource;
+package com.example.cipowela.gethtmlresource;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
         list_spinner = ArrayAdapter.createFromResource(this, R.array.protokol, android.R.layout.simple_spinner_item);
         list_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(list_spinner);
-
-        connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-        networkInfo = connectivityManager.getActiveNetworkInfo();
+//
+//        connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+//        networkInfo = connectivityManager.getActiveNetworkInfo();
 
     }
 
@@ -44,13 +43,14 @@ public class MainActivity extends AppCompatActivity {
         String link_url;
 
         link_url = spin.getSelectedItem().toString() + text_url.getText().toString();
-
-        if (networkInfo != null && networkInfo.isConnected()) {
-            yolo = new GetHTMLSource(this);
-            yolo.execute(link_url);
-        } else {
-            Toast.makeText(this,"check your internet connection",Toast.LENGTH_SHORT).show();
-            result_HTML.setText("No Internet Connection");
-        }
+        yolo = new GetHTMLSource(this);
+        yolo.execute(link_url);
+//
+//        if (networkInfo != null && networkInfo.isConnected()) {
+//
+//        } else {
+//            Toast.makeText(this,"check your internet connection",Toast.LENGTH_SHORT).show();
+//            result_HTML.setText("No Internet Connection");
+//        }
     }
 }
