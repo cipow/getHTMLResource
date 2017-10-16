@@ -2,6 +2,8 @@ package com.example.cipowela.gethtmlresource;
 
 import android.support.v4.content.AsyncTaskLoader;
 import android.content.Context;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -59,6 +61,7 @@ public class GetHTMLSource extends AsyncTaskLoader<String> {
             e.printStackTrace();
         }
 
-        return null;
+        return "Errors, try change protocol to http or https";
     }
+
 }
