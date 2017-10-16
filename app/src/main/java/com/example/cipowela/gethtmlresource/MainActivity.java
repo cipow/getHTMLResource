@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 InputMethodManager.HIDE_NOT_ALWAYS);
 
         if (!url.isEmpty()) {
-            if (url.contains(".")) {
+            if (url.contains(".") && !(url.contains(" "))) {
                 if (checkConnection()) {
                     result_HTML.setText("");
                     loading.setVisibility(View.VISIBLE);
