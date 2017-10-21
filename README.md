@@ -20,3 +20,6 @@
 > Masih error? (saya juga bingung) coba googling
 
 
+## PREVIEW
+
+![preview](ss.png)
