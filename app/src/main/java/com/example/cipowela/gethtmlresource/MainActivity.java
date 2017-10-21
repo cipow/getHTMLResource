@@ -41,12 +41,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         list_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(list_spinner);
 
+
+        // prevent force close apps
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             public void uncaughtException(Thread paramThread, Throwable paramThrowable) {
                 Log.e("Error" + Thread.currentThread().getStackTrace()[2], paramThrowable.getLocalizedMessage());
             }
         });
 
+        // init loader manager
         if (getSupportLoaderManager().getLoader(0) != null) {
             getSupportLoaderManager().initLoader(0, null, this);
         }
@@ -82,21 +85,26 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         if (!url.isEmpty()) {
             if (url.contains(".") && !(url.contains(" "))) {
-                if (checkConnection()) {
-                    result_HTML.setText("");
-                    loading.setVisibility(View.VISIBLE);
+                if (url.split("\\.").length > 1) {
+                    if (checkConnection()) {
+                        result_HTML.setText("");
+                        loading.setVisibility(View.VISIBLE);
 
-                    link_url = protokol + url;
+                        link_url = protokol + url;
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString("url_link", link_url);
-                    getSupportLoaderManager().restartLoader(0, bundle, this);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("url_link", link_url);
+                        getSupportLoaderManager().restartLoader(0, bundle, this);
 
+                    } else {
+                        Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
+                        result_HTML.setText("No Internet Connection");
+
+                    }
                 } else {
-                    Toast.makeText(this, "check your internet connection", Toast.LENGTH_SHORT).show();
-                    result_HTML.setText("No Internet Connection");
-
+                    result_HTML.setText("Unknown domain");
                 }
+
             } else {
                 result_HTML.setText("Invalid URL");
 
